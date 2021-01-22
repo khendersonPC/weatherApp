@@ -8,12 +8,20 @@ body{background-repeat: no-repeat;
     background-image: linear-gradient(228deg,rgba(248,189,233,1.00) 0%,rgba(255,255,255,1.00) 100%);
 }
 
-.gray{
-    background-repeat: no-repeat;
-	background-position: 50% 103%;
-	background-attachment: fixed;
-	background-image: -webkit-linear-gradient(51deg,rgba(255,255,255,1.00) 0.81%,rgba(0,0,0,1.00) 89.17%);
-	background-image: -moz-linear-gradient(51deg,rgba(255,255,255,1.00) 0.81%,rgba(0,0,0,1.00) 89.17%);
-	background-image: -o-linear-gradient(51deg,rgba(255,255,255,1.00) 0.81%,rgba(0,0,0,1.00) 89.17%);
-	background-image: linear-gradient(39deg,rgba(255,255,255,1.00) 0.81%,rgba(0,0,0,1.00) 89.17%);
+.yellow{
+    background: radial-gradient(#ffff00,rgba(248,189,233,1.00));
 }
+
+.results{
+    padding-top:50px;
+}
+
+img{
+    align-content: "left";
+
+}
+
+h2{
+    color: #98569D;
+}
+
