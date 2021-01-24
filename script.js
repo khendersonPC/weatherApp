@@ -70,14 +70,20 @@ $("#forecast").click(function () {
         // We store all of the retrieved data inside of an object called "response"
         .then(function (response) {
 
-            var iconcode = response.list[3].weather[0].icon;
-    
+            var dayc = 4;
+            for (var i = 0; i < 5; i++) { 
+            
+            var iconcode = response.list[dayc].weather[0].icon;
+            console.log(response);
             var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-            $('#wicon').attr('src', iconurl);
-            $("date1").text(response.list[3].dt_txt);
-
-
+            $("#wicon" + i).attr("src", "http://openweathermap.org/img/wn/10d@2x.png");
+            $("#date" + i).text(response.list[dayc].dt_txt.substring(0, 10));
+            var tempF = (response.list[dayc].main.temp - 273.15) * 1.80 + 32;
+            $("#temp"+ i).text(tempF.toFixed(1) + "°C");
+            $("#desc"+ i).text(response.list[dayc].weather[0].description);
+            dayc = dayc + 8;
+        }
             $('#forecast').show();
-        });
+});
 
 });
