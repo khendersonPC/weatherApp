@@ -4,16 +4,22 @@ var APIKey = "166a433c57516f51dfab1f7edaed8413";
 var city = "";
 var lat = "";
 var long = "";
-var i = $("<img>");
+var i = $("<img id='currentIcon'>");
 var tempDiv = $("<div>");
 var temp = $("<h2 class= 'tempH'>");
 var uv = $("<h2 class= 'uv'>");
 $(".results").append(tempDiv);
 $(tempDiv).append(temp, uv);
 $(".results").append(i);
+//this isn't working.
+$("#forecast").hide();
+$(".card-deck").hide();
 
 //This is for the current conditions selection
 $("#current").click(function () {
+    $("#currentIcon").show();
+    $("#forecast").hide();
+    $(".card-deck").hide();
     city = $("#city").val();
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
         "q=" + city + "&appid=" + APIKey;
@@ -64,7 +70,7 @@ $("#current").click(function () {
         method: "GET"
     })
 
-        // We store all of the retrieved data inside of an object called "response"
+        
         .then(function (response) {
             $(".uv").text("UV Index: " + response.value);
 
@@ -74,10 +80,14 @@ $("#current").click(function () {
 });
 
 //5 day forecast
-$("#forecast").click(function () {
+$("#forecastBut").click(function () {
 
     $("h2").text("");
-    $("img").remove();
+    $("#currentIcon").hide();
+    $("#forecast").show();
+    $(".card-deck").show();
+
+
     city = $("#city").val();
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
     $("body").removeClass("yellow");
@@ -91,18 +101,21 @@ $("#forecast").click(function () {
         .then(function (response) {
 
             var dayc = 4;
+
             for (var i = 0; i < 5; i++) {
 
                 var iconcode = response.list[dayc].weather[0].icon;
                 var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-                $("#wicon" + i).attr("src", "http://openweathermap.org/img/wn/10d@2x.png");
+                $("#wicon" + i).attr("src", iconurl);
+                $("#wicon" + i).attr("width", "20px");
                 $("#date" + i).text(response.list[dayc].dt_txt.substring(0, 10));
                 var tempF = (response.list[dayc].main.temp - 273.15) * 1.80 + 32;
                 $("#temp" + i).text(tempF.toFixed(1) + "°C");
                 $("#desc" + i).text(response.list[dayc].weather[0].description);
                 dayc = dayc + 8;
             }
-            $('#forecast').show();
+
+
         });
 
 });
