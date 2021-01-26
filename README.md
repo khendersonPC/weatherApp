@@ -8,3 +8,4 @@
 ##Examples of use 
 
 Here is screenshot of the current conditions in Paris. 
+![alt text](https://github.com/khendersonPC/weatherApp/blob/main/weatherAppScreenshot.png)
