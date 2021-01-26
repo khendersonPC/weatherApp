@@ -13,7 +13,7 @@ body{background-repeat: no-repeat;
 }
 
 .results{
-    padding-top:40px;
+    padding-top:20px;
 }
 
 img{
@@ -28,3 +28,12 @@ h2{
     display: none;
   }
 
+.bad{
+    color:red;
+}
+.good{
+    color: green;
+}
+.ok{
+    color:yellow;
+}
